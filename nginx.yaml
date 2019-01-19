@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: proxy
+  labels:
+    app: odoo
+    service: proxy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: odoo
+      service: proxy
+  template:
+    metadata:
+      labels:
+        app: odoo
+        service: proxy
+    spec:
+      containers:
+        - name: odoo-proxy
+          image: gcr.io/oscar-test-01/nginx-odoo:1.0
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 8069
+          - containerPort: 8072
+
