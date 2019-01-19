@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db
+  labels:
+    app: odoo
+    service: db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: odoo
+      service: db
+  template:
+    metadata:
+      labels:
+        app: odoo
+        service: db
+    spec:
+      containers:
+      - name: odoo-db
+        image: postgres:9.4
+        ports:
+        - containerPort: 5432
+        env:
+        - name: POSTGRES_PASSWORD
+          value: odoo
+        - name: POSTGRES_USER
+          value: odoo
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: db
+spec:
+  selector:
+    app: odoo
+    service: db
+  ports:
+  - protocol: TCP
+    port: 5432
+    targetPort: 5432
+  type: ClusterIP
