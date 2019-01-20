@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: odoo-web
-        image: gcr.io/oscar-test-01/odoo:1.0
+        image: ozrlz/odoo:1.0
         ports:
         - containerPort: 8069
         - containerPort: 8072

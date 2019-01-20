@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: odoo-proxy
-          image: gcr.io/oscar-test-01/nginx-odoo:1.0
+          image: ozrlz/nginx-odoo:1.0
           imagePullPolicy: Always
           ports:
           - containerPort: 80
