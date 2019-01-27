@@ -1,3 +1,3 @@
 #! /bin/bash
 
-ls | xargs -L 1 kubectl apply -f
+ls *.yaml | xargs -L 1 kubectl apply -f
